@@ -90,6 +90,7 @@ public class Convenio {
 			return false;
 		}  
 	}
+	
 	public int convenioJaCadastrado(DateTime df, DateTime di){
 		Days d = Days.daysBetween(df, di); 
 		logger.info("quantidade de dias entre as datas: " + d.getDays());	

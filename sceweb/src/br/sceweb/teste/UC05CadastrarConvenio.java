@@ -2,6 +2,7 @@ package br.sceweb.teste;
 
 import static org.junit.Assert.*;
 
+import org.joda.time.DateTime;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -18,6 +19,7 @@ public class UC05CadastrarConvenio {
 	static EmpresaDAO empresaDAO;
 	static Empresa empresa;
 	static String cnpj;
+	
 	@BeforeClass
 	public static void setUpBeforeClass() throws Exception {
 		empresaDAO = new EmpresaDAO();
@@ -44,23 +46,28 @@ public class UC05CadastrarConvenio {
 	}
 		
 	
-//	@Test(expected=IllegalArgumentException.class)
-//	public void CT05UC05A3CadastrarConvenio_cnpj_invalido() {
-//		cnpj = "11111";
-//		convenio.setCNPJ(cnpj);
-//	}
-	
-	@Test
-	public void CT03UC05A2Cadastrar_convenio_dti_invalida(){
-		assertFalse(convenio.validaData("42/05/2016"));
+	@Test(expected=IllegalArgumentException.class)
+	public void CT05UC05A3CadastrarConvenio_cnpj_invalido() {
+		cnpj = "11111";
+		convenio.setCNPJ(cnpj);
 	}
 	
-//	@Test
-//	public void CT02UC05A1Cadastrar_convenio_ja_cadastrado(){
-//		DateTime di = new DateTime(2016, 4, 5, 0, 0);
-//		DateTime df = new DateTime(2016, 5, 1, 0, 0);
-//		assertEquals (4, convenio.convenioJaCadastrado(df,di));
-//	}
+	@Test(expected=IllegalArgumentException.class)
+	public void CT03UC05A2Cadastrar_convenio_dti_invalida(){
+		convenio.setDataInicio("42/05/2016");
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void CT04UC05A2Cadastrar_convenio_dtf_invalida(){
+		convenio.setDataTermino("42/05/2016");
+	}
+	
+	@Test
+	public void CT02UC05A1Cadastrar_convenio_ja_cadastrado(){
+		DateTime di = new DateTime(2016, 4, 5, 0, 0);
+		DateTime df = new DateTime(2016, 5, 1, 0, 0);
+		assertEquals (4, convenio.convenioJaCadastrado(df,di));
+	}
 
 	@AfterClass
 	public static void tearDownAfterClass() throws Exception {

@@ -9,8 +9,19 @@ import com.mysql.jdbc.PreparedStatement;
 
 import br.sceweb.servico.FabricaDeConexoes;
 
+/**
+ * Classe responsável por fazer a interação entre o sistema e o banco (para a classe Convenio)
+ * @author William 
+ * @version 1
+ */
 public class ConvenioDAO {
 	Logger logger = Logger.getLogger(ConvenioDAO.class);
+	
+	/**
+	 * Adiciona um convênio no banco de dados sceweb
+	 * @param convenio
+	 * @return codigoRetorno
+	 */
 	public int adiciona(Convenio convenio){
 		PreparedStatement ps;
 		int codigoRetorno=0;
@@ -29,6 +40,12 @@ public class ConvenioDAO {
 			}
 		return codigoRetorno;
 	}
+	
+	/**
+	 * Exclui um convênio do banco de dados sceweb
+	 * @param cnpj
+	 * @return codigoRetorno
+	 */
 	public int exclui (String cnpj) {
 		java.sql.PreparedStatement ps;
 		int codigoretorno = 0;
