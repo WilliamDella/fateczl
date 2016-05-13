@@ -78,7 +78,7 @@ public class ServletControle extends HttpServlet {
 			logger.info("consulta empresa  = " + cnpj);
 			try {
 				if (!cnpj.isEmpty()) {
-//					empresa = consulta(cnpj);
+					empresa = consulta(cnpj);
 					if (empresa != null){
 						logger.info("consulta empresa nome da empresa  = " + empresa.getNomeDaEmpresa());
 						request.setAttribute("nomeDaEmpresa", empresa.getNomeDaEmpresa());
@@ -86,11 +86,11 @@ public class ServletControle extends HttpServlet {
 					    request.setAttribute("nomeFantasia", empresa.getNomeFantasia());
 					    request.setAttribute("endereco", empresa.getEndereco());
 					    request.setAttribute("telefone", empresa.getTelefone());
-//					    request.setAttribute("responsavel", empresa.getResponsavel());
-//					    request.setAttribute("telefoneResponsavel", empresa.getTelefoneResponsavel());
-//					    request.setAttribute("setor", empresa.getSetor());
-//					    request.setAttribute("email", empresa.getEmail());
-//					    request.setAttribute("msg", "");
+					    request.setAttribute("responsavel", empresa.getResponsavel());
+					    request.setAttribute("telefoneResponsavel", empresa.getTelefoneResponsavel());
+					    request.setAttribute("setor", empresa.getSetor());
+					    request.setAttribute("email", empresa.getEmail());
+					    request.setAttribute("msg", "");
 						url = "/visao/FormEmpresaResultadoDaConsulta.jsp";
 					} else {
 						request.setAttribute("msg", "cnpj invalido");
@@ -128,11 +128,11 @@ public class ServletControle extends HttpServlet {
 		return msg;
 	}
 
-//	public Empresa consulta(String cnpj) {
-//		logger.info("consulta empresa 2 = " + cnpj);
-//		EmpresaDAO empresaDAO = new EmpresaDAO();
-//		return empresaDAO.consultaEmpresa(cnpj);
-//	}
+	public Empresa consulta(String cnpj) {
+		logger.info("consulta empresa 2 = " + cnpj);
+		EmpresaDAO empresaDAO = new EmpresaDAO();
+		return empresaDAO.consultaEmpresa(cnpj);
+	}
 
 	public String excluirEmpresa(String cnpj) {
 		String msg = "";
