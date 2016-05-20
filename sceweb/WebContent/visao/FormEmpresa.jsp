@@ -10,7 +10,7 @@
             }
 </style>
 <title>Manter Empresa</title>
-<link rel="stylesheet" type="text/css" href="/sceweb/CSS/formato.css">
+<link rel="stylesheet" type="text/css" href="/sceweb/CSS/Formato.css">
 <script type="text/javascript" language="javascript">
 	
 	function incluir() {
